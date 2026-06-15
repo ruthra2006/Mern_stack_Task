@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#141e30,#243b55);
+    color:white;
+    text-align:center;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+h2{
+    font-size:3rem;
+    margin-bottom:30px;
+    text-shadow:0 0 15px rgba(255,255,255,0.5);
+}
+
+.choices{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    margin:20px 0;
+}
+
+button{
+    width:170px;
+    height:170px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    background-size:cover;
+    background-position:center;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    box-shadow:0 10px 25px rgba(255,255,255,0.3);
+}
+
+#rock{
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_NZ_p1RRChn-mUz1d7RGLTwe23ynDuB6lHQ&s");
+    border-radius:90px;
+}
+
+#paper{
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl5FdAC8ab-B6fM-m3j5ksCDCY1JIBMDwfig&s");
+    border-radius:90px;
+}
+
+#scissor{
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvN271EiXr9ALI6YecRkTHOHSMqT-2BmDbWw&s");
+    border-radius:90px;
+}
+
+h4{
+    margin-top:30px;
+    font-size:1.8rem;
+    background:rgba(255,255,255,0.1);
+    padding:15px 30px;
+    border-radius:10px;
+    min-width:300px;
+}
+</style>
+</head>
+<body>
+    <h2>Rock Paper Scissors</h2>
+    <div class="choices">
+        <button id="rock" onclick="play('rock')"></button>
+        <button id="paper" onclick="play('paper')"></button>
+        <button id="scissor" onclick="play('scissor')"></button>
+    </div>
+    <h4 id="result"> </h4>
+    <script>
+        function play(user){
+            const choices =["rock","paper","scissor"]
+            const comp = choices[Math.floor(Math.random()*3)]
+            if(comp === user){
+                document.getElementById("result").innerHTML = "Draw, the computer choose " + comp
+            }
+             else if(user === "rock" && comp === "scissor" || user === "paper" && comp === "rock" || user === "scissor" && comp === "paper"){
+                document.getElementById("result").innerHTML = "You win, the computer choose " + comp
+               
+            }
+             else{
+                document.getElementById("result").innerHTML = "You lose, the computer choose " + comp
+            }
+        }
+        play()
+    </script>
+
+</body>
+</html>
